@@ -5,10 +5,19 @@ function suma(a,b) {
 var resultado = suma(10,20)
 // console.log(resultado)
 
+var suma1 = function (n1,n2) {
+  return n1 + n2;
+}
+var r1 = suma1(2,8);
+var r2 = suma(-1,-6);
+var r3 = suma('2',2);
+var r4 = suma(1,true);
+// console.log(r1,r2,r3,r4);
+
 /*********************************************************** */
 /*b. A la función suma anterior, agregarle una validación para controlar si alguno delos parámetros no es un número, mostrar una alerta aclarando que uno de losparámetros tiene error y retornar el valor NaN como resultado.  */
 function dosValores(a,b) {
-  if (isNaN(a) || isNaN(b) ) {
+  if (typeof a !== Number || typeof b !== Number ) {
     // alert('Los valores deben ser numericos');
     return NaN
   }

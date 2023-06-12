@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./reset.css">
+  <link rel="stylesheet" href="./index.css">
+  <title>Estudiantes de la plata - Diario digital</title>
+</head>
+<body>
+  <header class="header">
+    <img src="./imagenes/Escudo.jpg" class="escudo-header" alt="Escudo estudiantes de la plata">
+    <nav>
+      <figure class="padre-hamburguesa">
+        <img src="./imagenes/Menu-hamburguesa.png" class="hamburguesa-menu" alt="Menu">
+      </figure>
+      <ul>
+        <a href="#"><li>Torneo</li></a>
+        <a href="#"><li>Sudamericanas</li></a>
+        <a href="#"><li>Libertadores</li></a>
+        <a href="#"><li>Nosotros</li></a>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="div-padre-de-todo">
+    <aside>
+      <div>
+        <div class="div-padre-img">
+          <img src="./imagenes/boselli.jpg" alt="Mauro Boselli" class="img-boselli">
+        </div>
+      </div>
+      <div class="aside-div-titulo">
+        <a href="#"><h3 class="aside-titulo">Mauro Boselli: goleador intratable con 8 goles.</h3></a>
+        <p class="aside-parrafo">Fue el goleador de la copa libertadores y gran figura del plantel pincharrata.</p>
+      </div>
+    </aside>
+    <section>
+      <div>
+        <a href="#"><h1>Estudiantes tetra campeón de la copa Libertadores</h1></a>
+        <p>En una noche inolvidable en el Mineirao el león se trajo la copa</p>
+      </div>
+    </section>
+    <article>
+      <div class="div-img-sabella">
+        <img src="./imagenes/sabella.jpg" alt="Alejandro Sabella" class="img-sabella">
+      </div>
+      <div class="div-contenedor-texto-sabella">
+        <p class="parrafo-sabella">15 de Julio de 2009</p>
+        <a href="#"><h3 class="h3-sabella">Alejando Sabella</h3></a>
+        <p class="p-sabella">Consiguió su primer título como entrenador</p>
+      </div>
+    </article>
+  </div>
+  <!-- FORM -->
+  <form action="#" class="form">
+    <div class="div-titulo-form">
+      <h3 id="titulo_form">Hola</h3>
+    </div>
+    <div class="div-padre-fieldset">
+    <fieldset>
+      <div class="div_inputs">
+        <label for="Nombre completo">Nombre completo</label>
+        <input type="text" id="nombre_completo" name="Nombre_completo">
+        <span class="error" id="error_nombre"></span>
+      </div>
+      <div class="div_inputs">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email">
+        <span class="error" id="error_email"></span>
+      </div>
+      <div class="div_inputs">
+        <label for="contrasenia">Contraseña</label>
+        <input type="password" id="contrasenia" name="contrasenia">
+        <span class="error" id="error_contrasenia"></span>
+      </div>
+      <div class="div_inputs">
+        <label for="repetir_contrasenia">Repetir contraseña</label>
+        <input type="password" id="repetir_contrasenia" name="contrasenia">
+        <span class="error" id="error_repetir"></span>
+      </div>
+      <div class="div_inputs">
+        <label for="edad">Edad</label>
+        <input type="number" id="edad" name="edad">
+        <span class="error" id="error_edad"></span>
+      </div>
+    </fieldset>
+    <fieldset>
+      <div class="div_inputs">
+        <label for="telefono">Telefono</label>
+        <input type="text" id="telefono" name="telefono">
+        <span class="error" id="error_telefono"></span>
+      </div>
+      <div class="div_inputs">
+        <label for="direccion">Dirección</label>
+        <input type="text" id="direccion" name="direccion">
+        <span class="error" id="error_direccion"></span>
+      </div>
+      <div class="div_inputs">
+        <label for="ciudad">Ciudad</label>
+        <input type="text" id="ciudad" name="ciudad">
+        <span class="error" id="error_ciudad"></span>
+      </div>
+      <div class="div_inputs">
+        <label for="codigo_postal">Código postal</label>
+        <input type="text" id="codigo_postal" name="codigo_postal">
+        <span class="error" id="error_codigo"></span>
+      </div>
+      <div class="div_inputs">
+        <label for="dni">DNI</label>
+        <input type="text" id="dni" name="dni">
+        <span class="error" id="error_dni"></span>
+      </div>
+    </fieldset>
+  </div>
+    <button type="submit" class="btn-form">Enviar</button>
+  </form>
+
+  <!-- MODAL -->
+  <div class="modal">
+    <div class="modal-content">
+    </div>
+    <button type="button" class="btn-form" id="modal_cerrar">Cerrar</button>
+  </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-div">
+      <p>Derechos reservados &#169Estéfano Bugari</p>
+    </div>
+  </footer>
+  <script src="./index.js"></script>
+</body>
+</html>
