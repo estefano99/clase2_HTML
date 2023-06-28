@@ -30,22 +30,22 @@ nombreCompleto.addEventListener("blur", function (e) {
 
   if (nombre.length < 6) {
     error_nombre.textContent = "Debe tener más de 6 caracteres";
-    nombreCompleto.classList.add('input_error');
+    nombreCompleto.classList.add("input_error");
     return;
   }
 
   if (!tieneEspacio) {
     error_nombre.textContent = "Debe contener un espacio";
-    nombreCompleto.classList.add('input_error');
+    nombreCompleto.classList.add("input_error");
     return;
   }
 
-  nombreCompleto.classList.remove('input_error');
+  nombreCompleto.classList.remove("input_error");
 });
 
 nombreCompleto.addEventListener("focus", function () {
   error_nombre.textContent = "";
-  nombreCompleto.classList.remove('input_error');
+  nombreCompleto.classList.remove("input_error");
 });
 
 //Email
@@ -54,16 +54,16 @@ email.addEventListener("blur", function (e) {
 
   if (email_value.indexOf("@") === -1) {
     error_mail.textContent = "Debe contener @";
-    email.classList.add('input_error');
-    return
+    email.classList.add("input_error");
+    return;
   }
 
-  email.classList.remove('input_error');
+  email.classList.remove("input_error");
 });
 
 email.addEventListener("focus", function () {
   error_mail.textContent = "";
-  email.classList.remove('input_error');
+  email.classList.remove("input_error");
 });
 
 //CONTRASEÑA
@@ -72,24 +72,26 @@ contrasenia.addEventListener("blur", function (e) {
 
   if (contrasenia_value.length < 8) {
     error_contrasenia.textContent = "Debe contener al menos 8 caracteres";
-    contrasenia.classList.add('input_error');
+    contrasenia.classList.add("input_error");
     return;
   }
 
-  var tieneCaracteresYNumeros = /[a-zA-Z].*\d|\d.*[a-zA-Z]/.test(contrasenia_value);
+  var tieneCaracteresYNumeros = /[a-zA-Z].*\d|\d.*[a-zA-Z]/.test(
+    contrasenia_value
+  );
 
   if (!tieneCaracteresYNumeros) {
     error_contrasenia.textContent = "Debe contener caracteres y números";
-    contrasenia.style.classList.add('input_error');
+    contrasenia.style.classList.add("input_error");
     return;
   }
 
-  contrasenia.classList.remove('input_error');
+  contrasenia.classList.remove("input_error");
 });
 
 contrasenia.addEventListener("focus", function (e) {
   error_contrasenia.textContent = "";
-  contrasenia.classList.remove('input_error');
+  contrasenia.classList.remove("input_error");
 });
 
 //REPETIR CONTRASEÑA
@@ -139,7 +141,7 @@ telefono.addEventListener("blur", function (e) {
   var telefono_value = e.target.value;
 
   var caracteresInvalidos = /[()\s-]/g; //Caracteres invalidos
-  var tieneString =  /[a-zA-Z]/.test(telefono_value);
+  var tieneString = /[a-zA-Z]/.test(telefono_value);
 
   if (caracteresInvalidos.test(telefono_value)) {
     telefono.classList.add("input_error");
@@ -157,7 +159,7 @@ telefono.addEventListener("blur", function (e) {
   if (tieneString) {
     telefono.classList.add("input_error");
     error_telefono.textContent = "Solo números";
-    return
+    return;
   }
 
   error_telefono.textContent = "";
@@ -194,7 +196,7 @@ direccion.addEventListener("blur", function (e) {
     error_direccion.textContent = "Debe tener espacios";
     return;
   }
-  console.log("1");
+
   error_direccion.textContent = "";
   direccion.classList.remove("input_error");
 });
@@ -258,47 +260,81 @@ dni.addEventListener("blur", function (e) {
   error_dni.textContent = "";
 });
 
-dni.addEventListener('focus', function() {
+dni.addEventListener("focus", function () {
   dni.classList.remove("input_error");
   error_dni.textContent = "";
-})
-
+});
 
 form.addEventListener("submit", validarCampos);
 
 //Submit del form
-var modal = document.querySelector('.modal') //Modal
+var modal = document.querySelector(".modal"); //Modal
 function validarCampos(e) {
   e.preventDefault();
 
-  var modalContent = document.querySelector('.modal-content'); //DIV dentro del modal que contiene las palabras
-  var contenido; //Contiene todo los valores de los inputs
+  var contenido; //Contiene el objeto a mandar
 
-  contenido = error_nombre.textContent ? 'Nombre completo: ' + error_nombre.textContent + ' - ' : 'Nombre completo: ' +  nombreCompleto.value + ' - ' ;
-  contenido += error_mail.textContent ? "Email: " + error_mail.textContent + ' - ' : "Email: " +  email.value + ' - ' ;
-  contenido += error_contrasenia.textContent ? "Contraseña: " + error_contrasenia.textContent + ' - ' : "Contraseña: " +  contrasenia.value + ' - ' ;
-  contenido += error_repetir.textContent ? "Contraseña repetida: " + error_repetir.textContent + ' - ' : "Contraseña repetida: " +  repetir_contrasenia.value + ' - ' ;
-  contenido += error_edad.textContent ? "Edad: " + error_edad.textContent : "Edad: " +  edad.value + ' - ' ;
-  contenido += error_telefono.textContent ? "Teléfono: " + error_telefono.textContent + ' - ' : "Teléfono: " +  telefono.value + ' - ' ;
-  contenido += error_direccion.textContent ? "Dirección: " + error_direccion.textContent + ' - ' : "Dirección: " +  direccion.value + ' - ' ;
-  contenido += error_ciudad.textContent ? "Ciudad: " + error_ciudad.textContent + ' - ' : "Ciudad: " +  ciudad.value + ' - ' ;
-  contenido += error_codigo_postal.textContent ? "Código postal: " + error_codigo_postal.textContent + ' - ' : "Código postal: " +  codigo_postal.value + ' - ' ;
-  contenido += error_dni.textContent ? "DNI: " + error_dni.textContent : "DNI: " +  dni.value;
+  contenido = {
+    nombreCompleto: nombreCompleto.value,
+    email: email.value,
+    contrasenia: contrasenia.value,
+    repetir_contrasenia: repetir_contrasenia.value,
+    edad: edad.value,
+    telefono: telefono.value,
+    direccion: direccion.value,
+    ciudad: ciudad.value,
+    codigo_postal: codigo_postal.value,
+    dni: dni.value,
+  };
 
-  modalContent.textContent = contenido;
-  modal.style.display = 'flex';
+  fetch("https://jsonplaceholder.ttypicode.com/posts", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(contenido),
+  })
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      confirmacion(data);
+    })
+    .catch(function (error) {
+      errorPeticion(error);
+    });
+}
 
+var modalContent = document.querySelector(".modal-content"); //DIV dentro del modal que contiene las palabras
+var h3Modal = document.querySelector("#h3-modal");
+var pModal = document.querySelector("#parrafo-modal");
+
+function confirmacion(data) {
+  h3Modal.textContent = "Se enviaron los datos correctamente. ";
+
+  for (let key in data) {
+    pModal.innerHTML += key + ': ' + data[key] + ' - '
+  }
+  modal.style.display = "flex";
+  modalContent.style.border = "green 4px solid";
+}
+
+function errorPeticion(error) {
+  
+  h3Modal.textContent = "Hubo un error: " + error;
+  modal.style.display = "flex";
+  modalContent.style.border = "red 4px solid";
 }
 
 //Cierra el modal
-var modal_cerrar = document.querySelector('#modal_cerrar');
+var modal_cerrar = document.querySelector("#modal_cerrar");
 
-modal_cerrar.addEventListener('click', function() {
-  modal.style.display = 'none';
-})
+modal_cerrar.addEventListener("click", function () {
+  modal.style.display = "none";
+});
 
 //Utilice el metodo keyup , porque el metodo keydown no muestra la ultima letra.
-nombreCompleto.addEventListener('keyup', function(e) {
-  var titulo = document.querySelector('#titulo_form');
+nombreCompleto.addEventListener("keyup", function (e) {
+  var titulo = document.querySelector("#titulo_form");
   titulo.textContent = "HOLA " + e.target.value;
-})
+});
