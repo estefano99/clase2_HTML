@@ -269,10 +269,10 @@ form.addEventListener("submit", validarCampos);
 
 //Submit del form
 var modal = document.querySelector(".modal"); //Modal
+var contenido; //Contiene el objeto a mandar
+
 function validarCampos(e) {
   e.preventDefault();
-
-  var contenido; //Contiene el objeto a mandar
 
   contenido = {
     nombreCompleto: nombreCompleto.value,
@@ -287,7 +287,7 @@ function validarCampos(e) {
     dni: dni.value,
   };
 
-  fetch("https://jsonplaceholder.ttypicode.com/posts", {
+  fetch("https://jsonplaceholder.typicode.com/posts", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -311,16 +311,17 @@ var pModal = document.querySelector("#parrafo-modal");
 
 function confirmacion(data) {
   h3Modal.textContent = "Se enviaron los datos correctamente. ";
+  localStorage.setItem("form", JSON.stringify(contenido));
 
   for (let key in data) {
-    pModal.innerHTML += key + ': ' + data[key] + ' - '
+    pModal.innerHTML += key + ": " + data[key] + " - ";
   }
+
   modal.style.display = "flex";
   modalContent.style.border = "green 4px solid";
 }
 
 function errorPeticion(error) {
-  
   h3Modal.textContent = "Hubo un error: " + error;
   modal.style.display = "flex";
   modalContent.style.border = "red 4px solid";
@@ -337,4 +338,22 @@ modal_cerrar.addEventListener("click", function () {
 nombreCompleto.addEventListener("keyup", function (e) {
   var titulo = document.querySelector("#titulo_form");
   titulo.textContent = "HOLA " + e.target.value;
+});
+
+//Guarda los datos del localStorage en el Form
+window.addEventListener("load", function () {
+  if (localStorage.getItem("form")) {
+    var datos = localStorage.getItem("form");
+    datos = JSON.parse(datos);
+    nombreCompleto.value = datos.nombreCompleto;
+    email.value = datos.email;
+    contrasenia.value = datos.contrasenia;
+    repetir_contrasenia.value = datos.repetir_contrasenia;
+    edad.value = datos.edad;
+    telefono.value = datos.telefono;
+    direccion.value = datos.direccion;
+    ciudad.value = datos.ciudad;
+    codigo_postal.value = datos.codigo_postal;
+    dni.value = datos.dni;
+  }
 });
