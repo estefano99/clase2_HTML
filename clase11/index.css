@@ -1,0 +1,146 @@
+body{
+  background-image: url(./imagenes/fondo_rick.webp);
+}
+
+header{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-titulo{
+  margin-bottom: 30px;
+}
+
+.div-filtros{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+input,button, select{
+  padding: 20px;
+  border-radius: 10px;
+  background-color: rgb(7, 201, 7);
+  color: white;
+  width: 200px;
+  font-size: 15px;
+}
+
+button:hover{
+  background-color: rgb(7, 255, 7);
+}
+
+.numero-paginacion-btn:hover{
+  background-color: rgb(7, 201, 7);
+  cursor:auto;
+}
+
+input::placeholder{
+  color: white;
+  font-size: 15px;
+}
+
+
+.div-btn{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.div-btn button{
+  background-color: rgb(6, 139, 184);
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.div-btn button:hover{
+  background-color: rgb(5, 183, 243);
+}
+
+main{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.card{
+  background-color: red;
+  width: 240px;
+  height: 244px;
+  margin: 20px 20px;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.card img{
+  width: 100%;
+  height: 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.card-body{
+  height: 30%;
+}
+
+.card-body p{
+  margin: 8px 0 0 12px;
+}
+
+.nombre{
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.especie{
+  font-size: 13px;
+  letter-spacing: 0.25px;
+  color: rgb(0, 0, 0, 60%);
+}
+
+footer{
+  height: 100px;
+}
+
+nav {
+  height: 100%;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ flex-wrap: wrap;
+}
+
+nav button{
+  font-weight: bold;
+  font-size: large;
+  cursor: pointer;
+}
+
+@media screen and (max-width:720px) {
+  .img-titulo{
+    width: 550px;
+  }
+
+  form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  input, select{
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+
+@media screen and (max-width:450px) {
+  .img-titulo{
+    width: 400px;
+  }
+}
+
